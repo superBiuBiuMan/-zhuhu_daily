@@ -1,8 +1,9 @@
+import React,{ Suspense } from "react";
 import routes from "./routes";
 import {RoutesType} from "./types";
 import { Routes,Route } from "react-router";
-import React from "react";
 import { useParams,useLocation,useSearchParams,useNavigate } from "react-router-dom";
+
 export const Element = (props:RoutesType):JSX.Element => {
     const { meta,component:Component }= props;
     const { title = '知乎日报-WebApp' } = meta || {};//获取标题
@@ -20,13 +21,15 @@ export const Element = (props:RoutesType):JSX.Element => {
 
 const RouterView = () => {
     return (
-        <Routes>
-            {
-                routes.map(item => {
-                    return <Route key={item.name} path={item.path} element={<Element {...item}/>}/>
-                })
-            }
-        </Routes>
+        //<Suspense fallback={}>
+            <Routes>
+                {
+                    routes.map(item => {
+                        return <Route key={item.name} path={item.path} element={<Element {...item}/>}/>
+                    })
+                }
+            </Routes>
+        //</Suspense>
     )
 }
 
