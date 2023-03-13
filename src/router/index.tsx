@@ -3,7 +3,7 @@ import routes from "./routes";
 import {RoutesType} from "./types";
 import { Routes,Route } from "react-router";
 import { useParams,useLocation,useSearchParams,useNavigate } from "react-router-dom";
-
+import LoadingFullPage from "@/components/LoadingFullPage";
 export const Element = (props:RoutesType):JSX.Element => {
     const { meta,component:Component }= props;
     const { title = '知乎日报-WebApp' } = meta || {};//获取标题
@@ -21,7 +21,7 @@ export const Element = (props:RoutesType):JSX.Element => {
 
 const RouterView = () => {
     return (
-        //<Suspense fallback={}>
+        <Suspense fallback={<LoadingFullPage/>}>
             <Routes>
                 {
                     routes.map(item => {
@@ -29,7 +29,7 @@ const RouterView = () => {
                     })
                 }
             </Routes>
-        //</Suspense>
+        </Suspense>
     )
 }
 

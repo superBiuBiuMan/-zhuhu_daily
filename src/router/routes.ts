@@ -14,7 +14,7 @@ const routes:RoutesType[] = [
     {
         path:'/login',
         name:'login',
-        component:lazy(() => import("../views/Login")),
+        component:lazy(() => import("@/views/Login")),
         meta:{
             title: "登录/注册-知乎日报"
         }
@@ -22,7 +22,7 @@ const routes:RoutesType[] = [
     {
         path:'/detail/:id',
         name:'detail',
-        component:lazy(() => import("../views/Detail")),
+        component:lazy(() => import("@/views/Detail")),
         meta:{
             title: "详情页面-知乎日报"
         }
@@ -30,7 +30,7 @@ const routes:RoutesType[] = [
     {
         path:'/personal',
         name:'personal',
-        component:lazy(() =>import("../views/Personal")),
+        component:lazy(() =>import("@/views/Personal")),
         meta:{
             title: "个人中心-知乎日报"
         }
@@ -38,7 +38,7 @@ const routes:RoutesType[] = [
     {
         path:'/favorite',
         name:'favorite',
-        component:lazy(() => import("../views/Favorite")),
+        component:lazy(() => import("@/views/Favorite")),
         meta:{
             title: "收藏夹-知乎日报"
         }
@@ -46,7 +46,7 @@ const routes:RoutesType[] = [
     {
         path:'/update',
         name:'update',
-        component: lazy(() => import("../views/Update")),
+        component: lazy(() => import("@/views/Update")),
         meta:{
             title: "修改个人信息-知乎日报",
         }
@@ -54,7 +54,7 @@ const routes:RoutesType[] = [
     {
         path:'*',
         name:'404',
-        component: lazy(() => import("../views/404")),
+        component: lazy(() => import("@/views/404")),
         meta:{
             title: "找不到页面-知乎日报"
         }

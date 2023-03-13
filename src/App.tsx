@@ -1,13 +1,12 @@
 import React from 'react';
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import RouterView from "./router";
-import LoadingFullPage from "./components/LoadingFullPage";
+const Router = BrowserRouter;
 function App() {
   return (
-      <LoadingFullPage/>
-      //<HashRouter>
-      //    <RouterView/>
-      //</HashRouter>
+      <Router>
+          <RouterView/>
+      </Router>
   );
 }
 

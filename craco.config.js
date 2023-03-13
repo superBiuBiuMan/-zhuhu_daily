@@ -1,5 +1,6 @@
 const CracoLessPlugin = require('craco-less');
-
+const path = require('path');
+const resolve = dir => path.resolve(__dirname,dir);/* 计算路径 */
 module.exports = {
     style: {
         postcss: {
@@ -38,6 +39,7 @@ module.exports = {
         ]
     ],
     plugins: [
+        /* less配置  */
         {
             plugin: CracoLessPlugin,
             options: {
@@ -50,5 +52,10 @@ module.exports = {
                 }
             }
         }
-    ]
+    ],
+    webpack: {
+        alias: {
+            '@': resolve('src'),
+        }
+    }
 };
