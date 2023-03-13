@@ -8,4 +8,4 @@ const Login = () => {
 };
 
 
-export default Login as React.FunctionComponent;
+export default Login

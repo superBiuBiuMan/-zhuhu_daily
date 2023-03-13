@@ -1,12 +1,12 @@
 import {lazy} from "react";
-import Login from "../views/Login";
+import Home from "@/views/Home";
 import {RoutesType} from "./types";
 
 const routes:RoutesType[] = [
     {
         path:"/",
         name:'home',
-        component:Login,
+        component:Home,
         meta:{
             title:"知乎日报-WebApp"
         }
