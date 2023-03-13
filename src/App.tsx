@@ -1,10 +1,12 @@
 import React from 'react';
+import { HashRouter } from "react-router-dom";
+import RouterView from "./router";
 
 function App() {
   return (
-    <div className="App">
-     你好,世界
-    </div>
+      <HashRouter>
+          <RouterView/>
+      </HashRouter>
   );
 }
 
