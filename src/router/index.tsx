@@ -23,7 +23,7 @@ const RouterView = () => {
         <Routes>
             {
                 routes.map(item => {
-                    return <Route id={item.name} path={item.path} element={<Element {...item}/>}/>
+                    return <Route key={item.name} path={item.path} element={<Element {...item}/>}/>
                 })
             }
         </Routes>
