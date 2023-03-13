@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { ConfigProvider } from "antd-mobile";
+
 import './index.less';
 /* 重置样式表 */
 import "../src/assets/css/reset.css";
 /* REM */
 import "amfe-flexible"
 import App from './App';
+
+/* 国际化 */
+import zhCN from "antd-mobile/es/locales/zh-CN";
 
 /* 最大宽度处理 */
 (() => {
@@ -26,5 +31,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-    <App />
+    <ConfigProvider locale={zhCN}>
+        <App />
+    </ConfigProvider>
 );

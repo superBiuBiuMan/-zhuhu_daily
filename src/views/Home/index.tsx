@@ -1,8 +1,10 @@
 import React from "react";
+import {Button} from "antd-mobile";
+
 const Home = () => {
     return (
         <div>
-            首页
+            <Button>你好</Button>
         </div>
     )
 };
