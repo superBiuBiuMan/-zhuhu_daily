@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-/* REM */
-import "amfe-flexible"
+import './index.less';
 /* 重置样式表 */
 import "../src/assets/css/reset.css";
+/* REM */
+import "amfe-flexible"
 import App from './App';
 
 /* 最大宽度处理 */
