@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ConfigProvider } from "antd-mobile";
-
+import { Provider } from "react-redux";
+import store from "@/store";
 import './index.less';
 /* 重置样式表 */
 import "../src/assets/css/reset.css";
@@ -32,6 +33,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <ConfigProvider locale={zhCN}>
-        <App />
+        <Provider store={store}>
+            <App />
+        </Provider>
     </ConfigProvider>
 );
