@@ -12,7 +12,7 @@ module.exports = {
                         [
                             'postcss-pxtorem',
                             {
-                                rootValue: 750/10, // (Number | Function) 表示根元素字体大小或根据input参数返回根元素字体大小
+                                rootValue: 75, // (Number | Function) 表示根元素字体大小或根据input参数返回根元素字体大小
                                 //unitPrecision: 5, // （数字）允许 REM 单位增长到的十进制数字
                                 propList: ['*'], // 可以从 px 更改为 rem 的属性 使用通配符*启用所有属性
                                 //selectorBlackList: [],// （数组）要忽略并保留为 px 的选择器。

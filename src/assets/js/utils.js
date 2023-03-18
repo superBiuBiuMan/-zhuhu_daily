@@ -249,6 +249,12 @@ const formatTime = function formatTime(time, template) {
     });
 };
 
+/* 1-12月转化为一 二 三 */
+const formatMonth = (month,start = 0) => {
+    if(!month) return '未知';
+    const monthBig = ['一','二','三','四','五','六','七','八','九','十','十一','十二'];
+    return start === 0 ? monthBig[month]: monthBig[month - start]
+}
 const utils = {
     toType,
     isFunction,
@@ -264,7 +270,8 @@ const utils = {
     merge,
     clone,
     storage,
-    formatTime
+    formatTime,
+    formatMonth
 };
 
 /* 处理冲突 */

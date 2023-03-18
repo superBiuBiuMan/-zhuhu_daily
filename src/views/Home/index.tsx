@@ -1,17 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import {Button} from "antd-mobile";
+import HomeHeader from "@/modules/Home/Head"
 import { useSelector } from "react-redux";
 
 const Home = () => {
     useSelector(state => {
         console.log(state)
     })
-    const test = () => {
-        console.log('点击了我')
-    }
+    const [day,setDay] = useState('2023/3/18')
     return (
         <div>
-            <Button onClick={test}>你好</Button>
+            <HomeHeader time={day}/>
         </div>
     )
 };

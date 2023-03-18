@@ -1,0 +1,40 @@
+.home-head-box{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  //日期
+  &_date{
+    padding: 0 40px 0 20px;
+    border-right: 2Px solid #d3d3d3;
+    flex-shrink: 0;
+    text-align: center;
+    &_day{
+      font-size: 60px;
+      line-height: 60px;
+    }
+    &_month{
+      font-size: 30px;
+    }
+  }
+  //提醒
+  &_warm{
+    flex: 1;
+    padding: 0 20px;
+    font-size: 50px;
+    font-weight: bold;
+  }
+  //头像
+  &_avatar{
+    flex-shrink: 0;
+    box-sizing: border-box;
+    width: 64px;
+    height: 64px;
+    &_pic{
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+  }
+}
