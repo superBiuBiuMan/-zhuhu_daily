@@ -57,5 +57,16 @@ module.exports = {
         alias: {
             '@': resolve('src'),
         }
+    },
+    devServer:{
+        proxy:{
+            '/api':{
+                target:'http://localhost:7100',
+                changeOrigin:true,
+                pathRewrite:{
+                    '^/api':'',
+                }
+            }
+        }
     }
 };
