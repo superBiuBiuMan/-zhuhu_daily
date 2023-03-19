@@ -15,7 +15,7 @@ const SwiperTop:React.FC<SwiperTopProps> = ({list}) => {
                                 swiperList.map(item => (
                                     <Swiper.Item key={item.id}>
                                         <div className='header-swiper-top_item'>
-                                            <Image className='header-swiper-top_item_pic' src={'aa'+item.imgLink} alt='轮播' lazy />
+                                            <Image className='header-swiper-top_item_pic' src={item.imgLink} alt='轮播' lazy />
                                         </div>
                                         <div className="header-swiper-top_info">
                                             <div className="header-swiper-top_info_title"> { item.title } </div>
