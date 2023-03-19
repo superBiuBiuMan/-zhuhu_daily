@@ -5,7 +5,9 @@ import { Provider } from "react-redux";
 import store from "@/store";
 import './index.less';
 /* 重置样式表 */
-import "../src/assets/css/reset.css";
+import "@/assets/css/reset.css";
+/* 覆盖antdMobile样式 */
+import "@/assets/css/antdMobile.less"
 /* REM */
 import "amfe-flexible"
 import App from './App';

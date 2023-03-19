@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
+import { useSelector } from "react-redux";
 import {Button} from "antd-mobile";
 import HomeHeader from "@/modules/Home/Head"
-import { useSelector } from "react-redux";
 import SwiperTop from "@/modules/Home/SwiperTop";
+import SkeletonItem from "@/components/SkeletonItem";
+import DayContent from "@/modules/Home/DayContent";
 import api from "@/api";
 
 const Home = () => {
@@ -23,6 +25,8 @@ const Home = () => {
             <HomeHeader time={day}/>
             {/* 轮播图 */}
             <SwiperTop list={swiperList}/>
+            {/* <SkeletonItem/> */}
+            <DayContent/>
         </div>
     )
 };

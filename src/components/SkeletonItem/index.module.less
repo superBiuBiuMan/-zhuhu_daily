@@ -1,0 +1,27 @@
+.skeletonItem{
+  box-sizing: border-box;
+  height: 180px;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 0 30px;
+  margin:  20px 0;
+  &_info{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-right: 80px;
+    &_title{
+      width: 100%;
+    }
+  }
+  &_pic{
+    box-sizing: border-box;
+    --width: 180px!important;
+    --height: 100% !important;
+    margin-top: 0!important;
+  }
+}
