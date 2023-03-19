@@ -5,6 +5,7 @@ import HomeHeader from "@/modules/Home/Head"
 import SwiperTop from "@/modules/Home/SwiperTop";
 import SkeletonItem from "@/components/SkeletonItem";
 import DayContent from "@/modules/Home/DayContent";
+import LoadMore from "@/components/LoadMore";
 import api from "@/api";
 
 const Home = () => {
@@ -26,6 +27,7 @@ const Home = () => {
             {/* 轮播图 */}
             <SwiperTop list={swiperList}/>
             {/* <SkeletonItem/> */}
+            <LoadMore/>
             <DayContent/>
         </div>
     )
