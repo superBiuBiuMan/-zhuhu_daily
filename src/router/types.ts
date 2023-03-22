@@ -14,6 +14,6 @@ export interface Props {
 export interface RoutesType {
     path:string,
     name:string,
-    component:React.FunctionComponent<Props>
+    component:React.FC<Props>
     meta?:Meta,
 }
