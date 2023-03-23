@@ -14,7 +14,7 @@ const Detail:React.FC<Props>= (props) => {
     useEffect(() => {
         (async () => {
             //获取详情图
-            const result = await api.queryNewsInfo(id ?? '');
+            const result = await api.queryNewsInfo(id ?? '').catch(() => ({}))
             flushSync(() => {
                 setInfo(result)
                 handleStyle(result);
@@ -26,7 +26,7 @@ const Detail:React.FC<Props>= (props) => {
     useEffect(() => {
         (async () => {
             //获取点赞信息
-            const result = await api.queryStoryExtra(id ?? '');
+            const result = await api.queryStoryExtra(id ?? '').catch(() => ({}))
             setExtra(result);
         })()
     },[])
@@ -70,11 +70,11 @@ const Detail:React.FC<Props>= (props) => {
                 <div className="zhihu-detail_footer_icons">
                     <div className="zhihu-detail_footer_icons_wrapper">
                         <FileOutline />
-                        <div className="zhihu-detail_footer_icons_wrapper_amount">120</div>
+                        <div className="zhihu-detail_footer_icons_wrapper_amount">{ extra?.short_comments }</div>
                     </div>
                     <div className="zhihu-detail_footer_icons_wrapper">
                         <LikeOutline />
-                        <div className="zhihu-detail_footer_icons_wrapper_amount">120</div>
+                        <div className="zhihu-detail_footer_icons_wrapper_amount">{ extra?.popularity }</div>
                     </div>
                     <div className="zhihu-detail_footer_icons_wrapper">
                         <StarOutline />
