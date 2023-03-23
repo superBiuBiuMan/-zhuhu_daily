@@ -5,3 +5,4 @@ export interface Extra {
     short_comments: number,  //短评论总数
     comments: number //评论总数
 }
+

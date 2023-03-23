@@ -3,7 +3,9 @@ import {Props} from "@/router/types";
 import api from "@/api";
 import "./index.less";
 import {Extra} from "@/views/Detail/types";
-import {flushSync} from "react-dom"
+import {flushSync} from "react-dom";
+import { SafeArea } from "antd-mobile";
+import { FileOutline, LikeOutline, StarOutline, TravelOutline,LeftOutline} from "antd-mobile-icons";
 const Detail:React.FC<Props>= (props) => {
     const { params } = props;
     const { id } = params;
@@ -41,16 +43,48 @@ const Detail:React.FC<Props>= (props) => {
     /* 处理大图 */
     const handleImage = (info:any) => {
         const { image } = info;
-        if(image) return;
-        const picDOM = document.querySelector('.img-place-holder');
-        console.log(picDOM)
+        if(!image) return;
+        const picDOM = document.querySelector<HTMLElement>('.img-place-holder');
+        const imgDOM = document.createElement('img');
+        imgDOM.src = image;
+        imgDOM.onload = () => {
+            //完成加载
+            imgDOM.style.cssText = 'width:100%'
+            //@ts-ignore;
+            picDOM.style.cssText = 'overflow:hidden';
+            picDOM?.appendChild(imgDOM);
+        }
+        imgDOM.onerror = () => {
+            //移除外层容器
+            const parent = picDOM?.parentElement;
+            parent?.removeChild(picDOM as any);
+        }
     }
     return (
         <div className='zhihu-detail'>
             {/* 文章内容 */}
             <div className="zhihu-detail_content" dangerouslySetInnerHTML={{__html:info.body}}></div>
             {/* 底部 */}
-            <div className="zhihu-detail_footer"></div>
+            <div className="zhihu-detail_footer">
+                <div className="zhihu-detail_footer_back"><LeftOutline /></div>
+                <div className="zhihu-detail_footer_icons">
+                    <div className="zhihu-detail_footer_icons_wrapper">
+                        <FileOutline />
+                        <div className="zhihu-detail_footer_icons_wrapper_amount">120</div>
+                    </div>
+                    <div className="zhihu-detail_footer_icons_wrapper">
+                        <LikeOutline />
+                        <div className="zhihu-detail_footer_icons_wrapper_amount">120</div>
+                    </div>
+                    <div className="zhihu-detail_footer_icons_wrapper">
+                        <StarOutline />
+                    </div>
+                    <div className="zhihu-detail_footer_icons_wrapper">
+                        <TravelOutline />
+                    </div>
+                </div>
+            </div>
+            <SafeArea position='bottom'/>
         </div>
     )
 }
