@@ -30,15 +30,13 @@ const http = function http(config) {
   }
 
   // 处理Token
-  let token = _.storage.get('tk'),
-    safeList = ['/user_info', '/user_update', '/store', '/store_remove', '/store_list'];
-  if (token) {
-    let reg = /\/api(\/[^?#]+)/,
-      [, $1] = reg.exec(url) || [];
-    let isSafe = safeList.some(item => {
-      return $1 === item;
-    });
-    if (isSafe) headers['authorization'] = token;
+  let token = _.storage.get('tk');
+  let safeList = ['/user_info', '/user_update', '/store', '/store_remove', '/store_list'];
+  let reg = /\/api(\/[^?#]+)/;
+  if(token){
+    let [,$1] = reg.exec(url) || [];
+    const isSafe = safeList.some(item => $1 === item);
+    if(isSafe) headers['authorization'] = token;//添加请求头
   }
 
   // send

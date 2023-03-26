@@ -24,6 +24,9 @@ const Login = () => {
                  <Form layout={'horizontal'}
                        className={'zhuhu-login_wrapper_form_form'}
                        mode={'card'}
+                       initialValues={{
+                           phone:'15666666666'
+                       }}
                        form={formInstance}>
                      <Form.Item label={ icons.phone } name={'phone'} rules={rules.phone}>
                          <Input placeholder='请输入手机号'/>

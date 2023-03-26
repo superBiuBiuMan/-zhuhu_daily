@@ -3,6 +3,7 @@ import { UserOutline,MailOutline } from "antd-mobile-icons";
 import {Rule} from "rc-field-form/lib/interface";
 import api from "@/api";
 import {Toast} from "antd-mobile";
+import utils from "@/assets/js/utils";
 export type Icons = 'phone' | 'code'
 export type OnSubmit = () => void;
 export type GetCode = () => Promise<any>;
@@ -45,10 +46,21 @@ export const useLogin:UseLogin = (formInstance:any) => {
 
     /* 点击提交 */
     const onSubmit:OnSubmit = useCallback(() => {
-        formInstance.validateFields().then((res:any) => {
+        formInstance.validateFields().then(async () => {
             const values = formInstance.getFieldsValue();
-            //todo 提交数据
-            console.log('获取的数据',values)
+            const { code,token } = await api.userLogin(values).catch(() => ({}))
+            if(+code !== 0){
+                Toast.show({
+                    icon:'fail',
+                    content:'验证码错误'
+                });
+            }else{
+                utils.storage.set('tk',token);
+                Toast.show({
+                    icon:'success',
+                    content:'登录成功'
+                })
+            }
         }).catch((res:any) => {
             return ;
         })
@@ -58,14 +70,13 @@ export const useLogin:UseLogin = (formInstance:any) => {
     const getCode:GetCode = useCallback(() => {
         return new Promise((resolve, reject) => {
             formInstance.validateFields(['phone']).then((res:any) => {
-                console.log('通过校验获取校验码')
                 const { phone } = res;
                 resolve(async () => {
                   const { code } =  await api.getPhoneCode(phone);
                   if(+code !== 0){
                       Toast.show({
                           icon:'fail',
-                          content:'发送失败'
+                          content:'获取验证码失败'
                       })
                   }
                 });
