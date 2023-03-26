@@ -3,6 +3,7 @@ import {Button, Form, Input} from "antd-mobile";
 import "./index.less";
 import {useLogin} from "@/views/Login/types";
 import LoginBg from "@/assets/images/svg/loginBg.svg"
+import ButtonLoading from "@/modules/Login/ButtonLoading";
 const Login = () => {
     const [formInstance] = Form.useForm();
     const { icons,rules,onSubmit,getCode } = useLogin(formInstance);
@@ -28,7 +29,9 @@ const Login = () => {
                          <Input placeholder='请输入手机号'/>
                      </Form.Item>
                      <Form.Item label={ icons.code } name={'code'} rules={rules.code}
-                                extra={<Button color={'primary'} shape={'rounded'} onClick={getCode}>获取验证码</Button>}>
+                                extra={
+                                    <ButtonLoading  color={'primary'} shape={'rounded'} onClick={getCode}>获取验证码</ButtonLoading>
+                                }>
                          <Input placeholder='请输入验证码' />
                      </Form.Item>
                      <Form.Item >

@@ -1,10 +1,11 @@
 import React, {useCallback, useMemo, useState} from "react";
 import { UserOutline,MailOutline } from "antd-mobile-icons";
 import {Rule} from "rc-field-form/lib/interface";
-
+import api from "@/api";
+import {Toast} from "antd-mobile";
 export type Icons = 'phone' | 'code'
 export type OnSubmit = () => void;
-export type GetCode = (e:React.MouseEvent) => void;
+export type GetCode = () => Promise<any>;
 export type UseLogin = (formInstance:any) => {
     icons:Record<Icons, JSX.Element>,
     rules:Record<string, Rule[]>,
@@ -55,11 +56,23 @@ export const useLogin:UseLogin = (formInstance:any) => {
 
     /* 获取验证码 */
     const getCode:GetCode = useCallback(() => {
-        formInstance.validateFields(['phone']).then((res:any) => {
-            console.log('通过校验获取校验码')
-        }).catch((res:any) => {
-            console.log(res)
-            return;
+        return new Promise((resolve, reject) => {
+            formInstance.validateFields(['phone']).then((res:any) => {
+                console.log('通过校验获取校验码')
+                const { phone } = res;
+                resolve(async () => {
+                  const { code } =  await api.getPhoneCode(phone);
+                  if(+code !== 0){
+                      Toast.show({
+                          icon:'fail',
+                          content:'发送失败'
+                      })
+                  }
+                });
+            }).catch((res:any) => {
+                console.log(res)
+                reject();
+            })
         })
     },[formInstance])
     return {

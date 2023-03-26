@@ -29,13 +29,31 @@ const queryNewsInfo = (id) => {
 
 /**
  * 获取新闻点赞信息
- * @param id 新闻ID
+ * @param id {string | number} 新闻ID
  */
-const queryStoryExtra = (id) => {
+export const queryStoryExtra = (id) => {
     return http.get('/api/story_extra',{
         params:{
             id,
         }
+    })
+}
+/**
+ * 获取验证码信息
+ * @param phone {string}手机号
+ */
+export const getPhoneCode = (phone) => {
+    return http.post('/api/phone_code',{
+        phone,
+    })
+}
+/**
+ * 用户登录
+ * @param params {phone & code}
+ */
+const userLogin = (params) => {
+    return http.post('/api/login',{
+        ...params,
     })
 }
 
@@ -44,5 +62,7 @@ const api = {
     queryNewsBefore,
     queryNewsInfo,
     queryStoryExtra,
+    getPhoneCode,
+    userLogin,
 }
 export default api;
