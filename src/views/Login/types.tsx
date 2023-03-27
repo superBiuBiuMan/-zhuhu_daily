@@ -4,6 +4,9 @@ import {Rule} from "rc-field-form/lib/interface";
 import api from "@/api";
 import {Toast} from "antd-mobile";
 import utils from "@/assets/js/utils";
+import {useDispatch} from "react-redux";
+import {fetchUserDataAction} from "@/store/slice/base/actions";
+
 export type Icons = 'phone' | 'code'
 export type OnSubmit = () => void;
 export type GetCode = () => Promise<any>;
@@ -14,6 +17,7 @@ export type UseLogin = (formInstance:any) => {
     getCode:GetCode,
 }
 export const useLogin:UseLogin = (formInstance:any) => {
+    const dispatch = useDispatch()
     /* 校验规则 */
     const [rules] = useState<Record<string, Rule[]>>({
         phone:[
@@ -56,6 +60,8 @@ export const useLogin:UseLogin = (formInstance:any) => {
                 });
             }else{
                 utils.storage.set('tk',token);
+                //todo 跳转处理 存储登陆者信息
+                dispatch(fetchUserDataAction() as any)
                 Toast.show({
                     icon:'success',
                     content:'登录成功'

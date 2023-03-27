@@ -6,5 +6,4 @@ const Store = configureStore({
         base:BaseSliceReducer,
     }
 })
-
 export default Store;

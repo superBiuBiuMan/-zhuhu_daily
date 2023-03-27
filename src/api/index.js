@@ -56,6 +56,13 @@ const userLogin = (params) => {
         ...params,
     })
 }
+/**
+ * 获取用户信息
+ * @returns {*}
+ */
+const queryUserInfo = () => {
+    return http.get('/api/user_info');
+}
 
 const api = {
     queryNewsNewest,
@@ -63,6 +70,7 @@ const api = {
     queryNewsInfo,
     queryStoryExtra,
     getPhoneCode,
+    queryUserInfo,
     userLogin,
 }
 export default api;
