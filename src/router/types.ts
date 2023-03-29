@@ -5,7 +5,7 @@ import {NavigateFunction} from "react-router/dist/lib/hooks";
 export interface Meta {
     title:string,//标题
 }
-export interface Props {
+export interface RouterBasicProps {
     location:Location,
     params:Params,
     searchParams:URLSearchParams,
@@ -14,6 +14,9 @@ export interface Props {
 export interface RoutesType {
     path:string,
     name:string,
-    component:React.FC<Props>
+    component:React.FC<RouterBasicProps>
     meta?:Meta,
 }
+export type CheckNeedAuth = () => [
+    boolean,
+];

@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {Props} from "@/router/types";
+import {RouterBasicProps} from "@/router/types";
 import api from "@/api";
 import "./index.less";
 import {Extra} from "@/views/Detail/types";
 import {flushSync} from "react-dom";
 import { SafeArea } from "antd-mobile";
 import { FileOutline, LikeOutline, StarOutline, TravelOutline,LeftOutline} from "antd-mobile-icons";
-const Detail:React.FC<Props>= (props) => {
+const Detail:React.FC<RouterBasicProps>= (props) => {
     const { params } = props;
     const { id } = params;
     const [info,setInfo] = useState<any>('');

@@ -4,9 +4,10 @@ import "./index.less";
 import {useLogin} from "@/views/Login/types";
 import LoginBg from "@/assets/images/svg/loginBg.svg"
 import ButtonLoading from "@/modules/Login/ButtonLoading";
-const Login = () => {
+import {RouterBasicProps} from "@/router/types";
+const Login:React.FC<RouterBasicProps> = (props) => {
     const [formInstance] = Form.useForm();
-    const { icons,rules,onSubmit,getCode } = useLogin(formInstance);
+    const { icons,rules,onSubmit,getCode } = useLogin(formInstance,props);
     return (
      <div className='zhuhu-login'>
          {/* 登录外框 */}

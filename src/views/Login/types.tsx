@@ -6,17 +6,19 @@ import {Toast} from "antd-mobile";
 import utils from "@/assets/js/utils";
 import {useDispatch} from "react-redux";
 import {fetchUserDataAction} from "@/store/slice/base/actions";
+import {RouterBasicProps} from "@/router/types";
+import {useNavigate} from "react-router-dom";
 
 export type Icons = 'phone' | 'code'
 export type OnSubmit = () => void;
 export type GetCode = () => Promise<any>;
-export type UseLogin = (formInstance:any) => {
+export type UseLogin = (formInstance:any,props:RouterBasicProps) => {
     icons:Record<Icons, JSX.Element>,
     rules:Record<string, Rule[]>,
     onSubmit:OnSubmit,
     getCode:GetCode,
 }
-export const useLogin:UseLogin = (formInstance:any) => {
+export const useLogin:UseLogin = (formInstance:any,props:RouterBasicProps) => {
     const dispatch = useDispatch()
     /* 校验规则 */
     const [rules] = useState<Record<string, Rule[]>>({
@@ -41,13 +43,13 @@ export const useLogin:UseLogin = (formInstance:any) => {
             }}
         ],
     })
+    /* icon图标组件 */
     const icons = useMemo<Record<string, JSX.Element>>(() => {
         return {
             phone:<UserOutline className={'zhuhu-login_wrapper_form_form_label'} />,
             code:<MailOutline className={'zhuhu-login_wrapper_form_form_label'}/>,
         }
     },[])
-
     /* 点击提交 */
     const onSubmit:OnSubmit = useCallback(() => {
         formInstance.validateFields().then(async () => {
@@ -60,12 +62,15 @@ export const useLogin:UseLogin = (formInstance:any) => {
                 });
             }else{
                 utils.storage.set('tk',token);
-                //todo 跳转处理 存储登陆者信息
                 dispatch(fetchUserDataAction() as any)
                 Toast.show({
                     icon:'success',
                     content:'登录成功'
-                })
+                });
+                //执行跳转,规定携带`redirect`字段
+                const {searchParams,navigate} = props;
+                const redirect = searchParams?.get('redirect')
+                redirect ? navigate(redirect,{ replace:true, }) : navigate(-1);
             }
         }).catch((res:any) => {
             return ;
