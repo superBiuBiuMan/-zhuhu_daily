@@ -2,7 +2,7 @@ import React from "react";
 import {Button, Form, Input} from "antd-mobile";
 import "./index.less";
 import {useLogin} from "@/views/Login/types";
-import LoginBg from "@/assets/images/svg/loginBg.svg"
+import LoginBg from "@/assets/svg/loginBg.svg"
 import ButtonLoading from "@/modules/Login/ButtonLoading";
 import {RouterBasicProps} from "@/router/types";
 const Login:React.FC<RouterBasicProps> = (props) => {

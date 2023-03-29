@@ -8,7 +8,6 @@ import DayContent from "@/modules/Home/DayContent";
 import LoadMore from "@/components/LoadMore";
 import api from "@/api";
 import dayjs from "dayjs";
-
 const Home = () => {
     const [day,setDay] = useState<any>('');//日期时间
     const [swiperList,setSwiperList] = useState<any[]>([]);//轮播图数据
@@ -16,7 +15,7 @@ const Home = () => {
     /* 初次渲染完成,向服务器发送数据请求 */
     useEffect(() => {
         (async () => {
-            const data = await api.queryNewsNewest().catch(() => ({}))
+            const data = await api.queryNewsNewest().catch(() => ({}));//获取新闻列表
             const { date,top_stories,stories } = data;
             setDay(date ?? '');
             setSwiperList(top_stories ?? []);

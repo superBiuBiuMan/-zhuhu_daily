@@ -68,17 +68,21 @@ const Detail:React.FC<RouterBasicProps>= (props) => {
             <div className="zhihu-detail_footer">
                 <div className="zhihu-detail_footer_back"><LeftOutline /></div>
                 <div className="zhihu-detail_footer_icons">
+                    {/* 评论 */}
                     <div className="zhihu-detail_footer_icons_wrapper">
                         <FileOutline />
                         <div className="zhihu-detail_footer_icons_wrapper_amount">{ extra?.short_comments }</div>
                     </div>
+                    {/* 点赞 */}
                     <div className="zhihu-detail_footer_icons_wrapper">
                         <LikeOutline />
                         <div className="zhihu-detail_footer_icons_wrapper_amount">{ extra?.popularity }</div>
                     </div>
+                    {/* 收藏 */}
                     <div className="zhihu-detail_footer_icons_wrapper">
                         <StarOutline />
                     </div>
+                    {/* 分享 */}
                     <div className="zhihu-detail_footer_icons_wrapper">
                         <TravelOutline />
                     </div>

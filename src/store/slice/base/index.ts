@@ -27,12 +27,6 @@ export const Base = createSlice({
                 state.info = action?.payload ?? {};//存储用户信息
             })
     }
-    //extraReducers:{
-    //    //@ts-ignore;
-    //    [fetchUserDataAction.fulfilled](state,action){
-    //        console.log(state,action)
-    //    }
-    //},
 })
 
 export const BaseSliceAction = Base.actions;
