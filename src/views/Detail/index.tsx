@@ -93,7 +93,7 @@ const Detail:React.FC<RouterBasicProps>= (props) => {
                 props.navigate({
                     pathname:'/login',
                     search:props.location.pathname + props.location.search,
-                })
+                },{replace:true})
             }else{
                 //有用户信息
                 const { code } = isCollection ? await api.reqRemoveCollection(id).catch(() => ({})) : await api.reqAddCollection(id).catch(() => ({}));
