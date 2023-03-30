@@ -64,6 +64,36 @@ const queryUserInfo = () => {
     return http.get('/api/user_info');
 }
 
+/**
+ * 添加收藏
+ * @param newsId {string | number}
+ */
+const reqAddCollection = (newsId) => {
+    return http.post('/api/store',{
+        newsId
+    })
+}
+/**
+ * 移除收藏
+ * @param id {string | number} 要移除的id信息
+ * @returns {*}
+ */
+const reqRemoveCollection = (id) => {
+    return http.get('/api/store_remove', {
+        params: {
+            id
+        }
+    });
+}
+
+/**
+ * 获取登陆者收藏夹列表
+ * @returns {*}
+ */
+const queryCollection = () => {
+    return http.get('/api/store_list');
+}
+
 const api = {
     queryNewsNewest,
     queryNewsBefore,
@@ -72,5 +102,8 @@ const api = {
     getPhoneCode,
     queryUserInfo,
     userLogin,
+    reqAddCollection,
+    reqRemoveCollection,
+    queryCollection,
 }
 export default api;

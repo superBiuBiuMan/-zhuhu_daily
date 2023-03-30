@@ -4,29 +4,40 @@ import api from "@/api";
 import "./index.less";
 import {Extra} from "@/views/Detail/types";
 import {flushSync} from "react-dom";
-import { SafeArea } from "antd-mobile";
+import {SafeArea, Toast} from "antd-mobile";
 import { FileOutline, LikeOutline, StarOutline, TravelOutline,LeftOutline} from "antd-mobile-icons";
+import { useDispatch,useSelector } from "react-redux";
+import {fetchUserCollectionAction, fetchUserDataAction} from "@/store/slice/base/actions";
+import {useNavigate} from "react-router-dom";
 const Detail:React.FC<RouterBasicProps>= (props) => {
     const { params } = props;
     const { id } = params;
     const [info,setInfo] = useState<any>('');
     const [extra,setExtra] = useState<Partial<Extra>>({});
+    const dispatch = useDispatch();
+    const isCollection = useSelector<any>((state) => {
+        return state.base?.favorite?.some((item:any) => item?.news?.id === id)
+    });//获取收藏列表从而计算是否已收藏
+    const loginInfo = useSelector<any>(state => state.base?.info);//是否具有登录信息
     useEffect(() => {
         (async () => {
-            //获取详情图
-            const result = await api.queryNewsInfo(id ?? '').catch(() => ({}))
+            const result = await api.queryNewsInfo(id ?? '').catch(() => ({}));//获取详情图
             flushSync(() => {
                 setInfo(result)
                 handleStyle(result);
             })
-            //保证DOM可以获取到
+            //使用flushSync,保证下面操作的DOM可以获取到
             handleImage(result);
         })()
     },[])
     useEffect(() => {
         (async () => {
             //获取点赞信息
-            const result = await api.queryStoryExtra(id ?? '').catch(() => ({}))
+            const result = await api.queryStoryExtra(id ?? '').catch(() => ({}));
+            //获取收藏列表
+            dispatch(fetchUserCollectionAction() as any)
+            //获取登录信息
+            dispatch(fetchUserDataAction() as any)
             setExtra(result);
         })()
     },[])
@@ -60,13 +71,51 @@ const Detail:React.FC<RouterBasicProps>= (props) => {
             parent?.removeChild(picDOM as any);
         }
     }
+    /* 点击返回 */
+    const handleBack = () => {
+        props.navigate(-1);
+    }
+    /* 用户收藏/取消收藏 */
+    const handleChargeCollection = async () => {
+        if(!id) {
+            Toast.show({
+                icon:"fail",
+                content:'非法请求!'
+            })
+        }else{
+            console.log(loginInfo)
+            if(!loginInfo){
+                Toast.show({
+                    icon:'fail',
+                    content:'请先登录',
+                })
+                //没有用户信息,跳转到用户信息
+                props.navigate({
+                    pathname:'/login',
+                    search:props.location.pathname + props.location.search,
+                })
+            }else{
+                //有用户信息
+                const { code } = isCollection ? await api.reqRemoveCollection(id).catch(() => ({})) : await api.reqAddCollection(id).catch(() => ({}));
+                if(+code !== 0){
+                    Toast.show({
+                        icon:'fail',
+                        content:isCollection ? '收藏失败' : '取消收藏失败'
+                    })
+                }
+                //重新dispatch,为了重新render下
+                dispatch(fetchUserCollectionAction() as any);
+            }
+        }
+    }
     return (
         <div className='zhihu-detail'>
             {/* 文章内容 */}
             <div className="zhihu-detail_content" dangerouslySetInnerHTML={{__html:info.body}}></div>
             {/* 底部 */}
             <div className="zhihu-detail_footer">
-                <div className="zhihu-detail_footer_back"><LeftOutline /></div>
+                {/* 返回Icon */}
+                <div className="zhihu-detail_footer_back" onClick={handleBack}><LeftOutline /></div>
                 <div className="zhihu-detail_footer_icons">
                     {/* 评论 */}
                     <div className="zhihu-detail_footer_icons_wrapper">
@@ -79,8 +128,8 @@ const Detail:React.FC<RouterBasicProps>= (props) => {
                         <div className="zhihu-detail_footer_icons_wrapper_amount">{ extra?.popularity }</div>
                     </div>
                     {/* 收藏 */}
-                    <div className="zhihu-detail_footer_icons_wrapper">
-                        <StarOutline />
+                    <div className="zhihu-detail_footer_icons_wrapper" onClick={handleChargeCollection}>
+                        <StarOutline style={{color:isCollection ? '#2e9eff' : 'black'}}/>
                     </div>
                     {/* 分享 */}
                     <div className="zhihu-detail_footer_icons_wrapper">
