@@ -1,9 +1,13 @@
-
-
-const Personal = () => {
+import React from "react";
+import {RouterBasicProps} from "@/router/types";
+import BaseInfo from "@/modules/Personal/BaseInfo";
+import Control from "@/modules/Personal/Control";
+import "./index.less";
+const Personal:React.FC<RouterBasicProps> = (props) => {
   return (
-      <div>
-        个人中心
+      <div className='zhihu-personal'>
+          <BaseInfo/>
+          <Control/>
       </div>
   );
 };

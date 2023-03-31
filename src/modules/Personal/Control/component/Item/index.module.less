@@ -1,0 +1,70 @@
+.item{
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20px 30px;
+  background: white;
+  border-radius: 8px;
+  position: relative;
+  //box-shadow: 0 -4px 10px 0 rgba(0,0,0,.4);
+  //自定义虚线
+  &_dashed{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1Px;
+
+    background-image: linear-gradient(
+      to right,
+      #ccc 0%,
+      #ccc 50%,
+      transparent 50%
+    );
+    background-size: 14Px 1Px;
+    background-repeat: repeat-x;
+  }
+  .dotted{
+    content: '';
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -10px;
+    z-index: 10;
+    background: #ebebeb;
+  }
+  &:before{
+    .dotted();
+    left: -8px;
+  }
+  &:after{
+    .dotted();
+    right: -8px;
+  }
+  //图标
+  &_icon{
+    font-size: 40px;
+    line-height: 40px;
+  }
+  //操作一栏名称
+  &_title{
+    flex: 1;
+    margin-left: 10px;
+    font-size: 40px;
+    line-height: 40px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  //预览(可能没有)
+  &_preview{
+    flex: 1;
+  }
+  //进入操作
+  &_enter{
+    font-size: 38px;
+    line-height: 38px;
+    color: gray;
+  }
+}

@@ -1,0 +1,42 @@
+.personal-base{
+  &_bar{
+    --height: 80px;
+    background: white;
+  }
+  &_info{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    height: 120px;
+    box-sizing: border-box;
+    padding: 0 20px;
+    &_avatar{
+      flex-shrink: 0;
+      img{
+        width: 120px;
+        height: 120px;
+        aspect-ratio: 1 /1;
+        border-radius: 50%;
+      }
+    }
+    &_content{
+      flex: 1;
+      height: 80%;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      color: white;
+      font-weight: bold;
+      margin: 0 20px;
+      padding: 0 10px;
+      font-size: 30px;
+      white-space: nowrap;
+      border-radius: 16px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    &_operation{
+      width: 60px;
+    }
+  }
+}

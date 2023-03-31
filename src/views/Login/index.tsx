@@ -9,8 +9,8 @@ const Login:React.FC<RouterBasicProps> = (props) => {
     const [formInstance] = Form.useForm();
     const { icons,rules,onSubmit,getCode } = useLogin(formInstance,props);
     return (
-        <div style={{height:'100vh',boxSizing:'border-box'}}>
-            <NavBar style={{'--height':'40px'}} onBack={() => props.navigate({pathname:'/'},{replace:true})}>登录/注册</NavBar>
+        <div className={'zhuhu-login-wrapper'} >
+            <NavBar className='zhuhu-login-wrapper_bar' onBack={() => props.navigate({pathname:'/'},{replace:true})}>登录/注册</NavBar>
             <div className='zhuhu-login'>
                 {/* 登录外框 */}
                 <div className="zhuhu-login_wrapper">
