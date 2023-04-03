@@ -7,7 +7,7 @@
 
 ## 介绍
 
-* 技术栈使用React18 + React-redux + redux/toolkit + craco(重写配置) + ( amfe-flexible + postcss-pxtorem 达到适配 ) + less
+* 技术栈使用React18 + React-Router6+ React-redux + redux/toolkit + craco(重写配置) + ( amfe-flexible + postcss-pxtorem 达到适配 ) + less
 
 * `keep-alive`效果没实现,找了几个库效果都不理想,就没去弄了
 
