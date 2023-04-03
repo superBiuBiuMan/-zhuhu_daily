@@ -60,7 +60,7 @@ const Detail:React.FC<RouterBasicProps>= (props) => {
         imgDOM.onload = () => {
             //完成加载
             imgDOM.style.cssText = 'width:100%'
-            //@ts-ignore;
+            //@ts-ignore
             picDOM.style.cssText = 'overflow:hidden';
             picDOM?.appendChild(imgDOM);
         }

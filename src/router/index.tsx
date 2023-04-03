@@ -5,12 +5,10 @@ import { Routes,Route } from "react-router";
 import { useParams,useLocation,useSearchParams,useNavigate } from "react-router-dom";
 import LoadingFullPage from "@/components/LoadingFullPage";
 import {useCheckNeedAuth} from "@/router/methods";
-
 export const Element = (props:RoutesType):JSX.Element => {
     const { meta,component:Component }= props;
-    const { title = '知乎日报-WebApp' } = meta || {};//获取标题
+    const { title = '知乎日报-WebApp' } = meta || {};//获取标题和是否缓存
     document.title = title;//设置网页标题
-
     const navigate = useNavigate();
     /* 获取路由信息 */
     const params = useParams();
@@ -20,15 +18,9 @@ export const Element = (props:RoutesType):JSX.Element => {
     const [needAuth] = useCheckNeedAuth(pathname)
 
     return needAuth
-        ?
-        <LoadingFullPage/>
-        :
-        (
-            <Component
-            location={location}
-            params={params}
-            searchParams={searchParams}
-            navigate={navigate}/>
+        ? <LoadingFullPage/>
+        : (
+                <Component location={location} params={params} searchParams={searchParams} navigate={navigate}/>
         )
         //?
         //<LoadingFullPage/>
@@ -42,7 +34,10 @@ const RouterView = () => {
             <Routes>
                 {
                     routes.map(item => {
-                        return <Route key={item.name} path={item.path} element={<Element {...item}/>}/>
+                        console.log(item)
+                        return <Route key={item.name} path={item.path} element={
+                                <Element {...item}/>
+                        }/>
                     })
                 }
             </Routes>

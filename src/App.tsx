@@ -4,9 +4,9 @@ import RouterView from "./router";
 const Router = BrowserRouter;
 function App() {
   return (
-      <Router>
-          <RouterView/>
-      </Router>
+          <Router>
+              <RouterView/>
+          </Router>
   );
 }
 

@@ -43,6 +43,7 @@ const Home = () => {
             {/* 轮播图 */}
             <SwiperTop list={swiperList}/>
             {/* <SkeletonItem/> */}
+            {/* 列表项目 */}
             <DayContent data={newList}/>
             <LoadMore style={{display:newList.length > 0 ? 'block' : 'none'}} onBottom={handleOnBottom}/>
         </div>

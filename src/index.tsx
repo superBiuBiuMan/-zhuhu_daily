@@ -34,9 +34,9 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-    <ConfigProvider locale={zhCN}>
-        <Provider store={store}>
-            <App />
-        </Provider>
-    </ConfigProvider>
+        <ConfigProvider locale={zhCN}>
+            <Provider store={store}>
+                <App />
+            </Provider>
+        </ConfigProvider>
 );
