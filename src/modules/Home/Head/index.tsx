@@ -25,7 +25,6 @@ const Head:React.FC<HeadProps> = ({ time }) => {
     useEffect(() => {
         (async () => {
             const { payload } = await dispatch(fetchUserDataAction() as any).catch(() => ({}));
-            console.log(payload)
             if(payload){
                 setAvatar(payload?.pic ?? defaultImage)
             }
