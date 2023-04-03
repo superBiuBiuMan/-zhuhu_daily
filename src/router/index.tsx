@@ -34,7 +34,6 @@ const RouterView = () => {
             <Routes>
                 {
                     routes.map(item => {
-                        console.log(item)
                         return <Route key={item.name} path={item.path} element={
                                 <Element {...item}/>
                         }/>

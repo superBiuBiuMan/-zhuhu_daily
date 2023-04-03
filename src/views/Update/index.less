@@ -1,0 +1,37 @@
+.zhihu-update{
+  &_bar{
+    --height: 80px;
+    background: white;
+  }
+  &_form{
+    font-size: 32px;
+    margin: 0 30px;
+    &_item{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-bottom: 20px;
+      &_title{
+        flex-shrink: 0;
+      }
+      &_com{
+        box-sizing: border-box;
+        margin-left: 30px;
+        width: 100%;
+        &_upload{
+          --cell-size:120px;
+        }
+        &_input{
+          --font-size: 30px;
+        }
+      }
+    }
+    &_submit{
+      &_btn{
+        width: 100%;
+        font-size: 28px;
+        padding: 10px 0;
+      }
+    }
+  }
+}

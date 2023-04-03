@@ -94,6 +94,26 @@ const queryCollection = () => {
     return http.get('/api/store_list');
 }
 
+/**
+ * 上传图片
+ * @param file 图片文件
+ */
+const upload = (file) => {
+    let fm = new FormData();
+    fm.append('file',file);
+    return http.post('/api/upload',fm);
+}
+
+/**
+ * 修改用户信息
+ * @param info { { username:string,pic:string } }
+ */
+const reqChangeData = (info) => {
+    return http.post('/api/user_update',{
+        ...info,
+    })
+}
+
 const api = {
     queryNewsNewest,
     queryNewsBefore,
@@ -105,5 +125,7 @@ const api = {
     reqAddCollection,
     reqRemoveCollection,
     queryCollection,
+    upload,
+    reqChangeData,
 }
 export default api;
