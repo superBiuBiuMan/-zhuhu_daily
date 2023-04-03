@@ -5,7 +5,7 @@ import { RightOutline } from "antd-mobile-icons";
 
 const Item:React.FC<ItemProps> = (props) => {
     return (
-        <div className={classes.item} >
+        <div className={classes.item} onClick={(e) => props.onClick && props.onClick(e)}>
             {/* 图标 */}
             <div className={classes.item_icon}>{ props.icon }</div>
 
@@ -17,7 +17,7 @@ const Item:React.FC<ItemProps> = (props) => {
                 props.preview && <div className={classes.item_preview}>{ props.preview }</div>
             }
             {/* 进入操作 */}
-            <div className={classes.item_enter} onClick={(e) => props.onClick && props.onClick(e)}>
+            <div className={classes.item_enter} >
                 <RightOutline />
             </div>
             {/* 自定义虚线 */}

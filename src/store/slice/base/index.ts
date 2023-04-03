@@ -26,6 +26,11 @@ export const Base = createSlice({
                 name:'我是新名称'
             }
         },
+        //清空数据(用户信息和收藏夹列表)
+        clearAllInfo: (state) => {
+            state.info = null;
+            state.favorite = null;
+        }
     },
     extraReducers(builder){
         builder
