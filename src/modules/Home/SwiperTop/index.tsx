@@ -12,7 +12,7 @@ const SwiperTop:React.FC<SwiperTopProps> = ({list}) => {
                     <>
                         <Swiper autoplay autoplayInterval={6000}>
                             {
-                                swiperList.map(item => (
+                                swiperList?.map(item => (
                                     <Swiper.Item key={item.id}>
                                         <div className='header-swiper-top_item'>
                                             <Image className='header-swiper-top_item_pic' src={item.imgLink} alt='轮播' lazy />
@@ -22,7 +22,7 @@ const SwiperTop:React.FC<SwiperTopProps> = ({list}) => {
                                             <div className="header-swiper-top_info_author">{ item.author }</div>
                                         </div>
                                     </Swiper.Item>
-                                ))
+                                )) ?? null
                             }
                         </Swiper>
                     </>

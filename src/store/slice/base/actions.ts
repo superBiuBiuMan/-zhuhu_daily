@@ -7,7 +7,7 @@ export const fetchUserDataAction = createAsyncThunk('fetch/fetchUserDataAction',
     //将作为payload值
     return data;
 })
-
+/* 获取收藏夹列表 */
 export const fetchUserCollectionAction = createAsyncThunk('fetch/fetchUserCollectionAction',async() => {
     const result = await api.queryCollection().catch(() => ({}))
     const { data } = result;

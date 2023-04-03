@@ -8,7 +8,6 @@ import {SafeArea, Toast} from "antd-mobile";
 import { FileOutline, LikeOutline, StarOutline, TravelOutline,LeftOutline} from "antd-mobile-icons";
 import { useDispatch,useSelector } from "react-redux";
 import {fetchUserCollectionAction, fetchUserDataAction} from "@/store/slice/base/actions";
-import {useNavigate} from "react-router-dom";
 const Detail:React.FC<RouterBasicProps>= (props) => {
     const { params } = props;
     const { id } = params;

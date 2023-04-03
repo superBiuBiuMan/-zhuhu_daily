@@ -5,7 +5,7 @@ export interface DayContentProps {
 export interface ListItem {
     id:string,
     title:string,
-    hint:string,//作者
+    hint?:string,//作者
     picLink:string,//图片链接
 }
 export interface ShowList {
