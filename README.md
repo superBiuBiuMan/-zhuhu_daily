@@ -47,25 +47,25 @@ node server.js
 
 ### 首页
 
-| ![](https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202304032139045.png) | ![](https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202304032139406.png) |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![](README.assets/202304032139045.png) | ![](README.assets/202304032139406.png) |
+| -------------------------------------- | -------------------------------------- |
 
 ### 详情页面
 
-![](https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202304032140879.png)
+![](README.assets/202304032140879.png)
 
 ### 个人中心页
 
-![](https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202304032141168.png)
+![](README.assets/202304032141168.png)
 
 ### 修改个人信息页
 
-![](https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202304032141485.png)
+![](README.assets/202304032141485.png)
 
 ### 收藏页
 
-![](https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202304032142824.png)
+![](README.assets/202304032142824.png)
 
 ### 加载骨架屏
 
-![](https://dreamos.oss-cn-beijing.aliyuncs.com/gitblog/202304032142473.png)
+![](README.assets/202304032142473.png)
